@@ -4,10 +4,23 @@
     android:layout_height="match_parent"
     >
     <TextView
+        android:id="@+id/category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="category"
+        style="@style/Text.notosanscjkkr_thin"
+        android:textSize="12dp"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/blue"
+        />
+    <TextView
         android:id="@+id/company"
+        android:layout_below="@id/category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="회사이름"
+        style="@style/Text.notosansmonocjkkr_bold"
+        android:layout_marginTop="7dp"
         android:textColor="@color/black"
         />
     <TextView
@@ -15,6 +28,8 @@
         android:layout_below="@id/company"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="성실한 사람 구합니다."
+        style="@style/Text.notosansmonocjkkr_regular"
         />
 </RelativeLayout>

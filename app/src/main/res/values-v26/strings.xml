@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Text.notosanscjkkr_thin" parent="android:TextAppearance">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/notosanscjkkr_thin</item>
+        <item name="android:fontWeight">400</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+</resources>

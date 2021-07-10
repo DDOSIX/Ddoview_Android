@@ -37,8 +37,8 @@ class MainActivity : AppCompatActivity() {
 
         //listview 어댑터
         adapter = AdvertisementAdapter()
-        adapter.addItem(AdvertisementItem("GDG", "개발자 구합니다."))
-        adapter.addItem(AdvertisementItem("AAA", "개발자 구합니다.2"))
+        adapter.addItem(AdvertisementItem("GDG", "이커머스","개발자 구합니다."))
+        adapter.addItem(AdvertisementItem("AAA", "패션","개발자 구합니다.2"))
         binding.listView.adapter = adapter
 
         //아이템을 클릭할 경우 ReviewFragment로 넘어감
@@ -121,10 +121,12 @@ class MainActivity : AppCompatActivity() {
                 )
             }
             val item = items.get(position)
+            val category = view?.findViewById<TextView>(R.id.category)
             val company = view?.findViewById<TextView>(R.id.company)
             val contents = view?.findViewById<TextView>(R.id.contents)
             company!!.setText(item.title)
             contents!!.setText(item.contents)
+            category!!.setText(item.category)
             return view!!
         }
 
