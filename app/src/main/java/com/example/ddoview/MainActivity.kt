@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var adapter: AdvertisementAdapter
     private var reviewFragment:ReviewFragment = ReviewFragment()
     private var reviewWiteFragment:ReviewWriteFragment = ReviewWriteFragment()
+    private var detailReviewFragment:DetailReviewFragment = DetailReviewFragment()
     var mainBundle = Bundle()
 
     override fun onStart() {
@@ -68,6 +69,12 @@ class MainActivity : AppCompatActivity() {
             //reviewWrtieFragment로 이동
             fragment = reviewWiteFragment
             reviewWiteFragment.arguments = bundle
+        }
+        else if(index == 3)
+        {
+            //detailReviewFragment로 이동
+            fragment = detailReviewFragment
+            detailReviewFragment.arguments = bundle
         }
 
         supportFragmentManager.beginTransaction().replace(R.id.container, fragment).commit()

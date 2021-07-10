@@ -71,6 +71,13 @@ class ReviewFragment: Fragment() {
             mainActivity!!.onChangeFragment(1, mainActivity!!.mainBundle)
         }
 
+        binding.listView.setOnItemClickListener { parent, view, position, id ->
+            val item = adapter.getItem(position) as ReviewItem
+
+            //reviewFragment로 이동하기, id 넘기기
+            mainActivity!!.mainBundle.putString("id",item.title)
+            mainActivity!!.onChangeFragment(3,mainActivity!!.mainBundle)
+        }
         return rootView
     }
 
