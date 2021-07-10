@@ -106,13 +106,13 @@
                 android:layout_below="@id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Q.배송은 어떠셨나요?"
+                android:text="Q.이 제품을 사용한 이유는?"
                 android:layout_marginTop="14dp"
                 android:layout_marginLeft="15dp"
                 style="@style/Text.notosansmonocjkkr_regular"
                 android:textColor="@color/blue"
                 />
-            <EditText
+            <TextView
                 android:id="@+id/answer"
                 android:layout_marginTop="8dp"
                 android:layout_marginLeft="15dp"
@@ -126,13 +126,13 @@
                 android:layout_below="@id/answer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Q.배송은 어떠셨나요?"
+                android:text="Q.장점은?"
                 android:layout_marginTop="14dp"
                 android:layout_marginLeft="15dp"
                 style="@style/Text.notosansmonocjkkr_regular"
                 android:textColor="@color/blue"
                 />
-            <EditText
+            <TextView
                 android:id="@+id/answer2"
                 android:layout_marginTop="8dp"
                 android:layout_marginLeft="15dp"

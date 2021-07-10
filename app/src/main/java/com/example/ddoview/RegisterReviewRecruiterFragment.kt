@@ -22,10 +22,7 @@ import com.example.ddoview.databinding.ReviewWriteFragmentBinding
 class RegisterReviewRecruiterFragment: Fragment() {
     private var _binding: RecruiteWriteFragmentBinding ?= null
     private val binding get() = _binding!!
-    private var bundle: Bundle? = null
     private lateinit var adapter: RegisterReviewRecruiterFragment.RegisterReviewRecruiterAdapter
-    private var company: String? = null
-    private var contents: String? = null
     private var mainActivity: MainActivity? = null
 
     //뒤로가기
@@ -56,6 +53,9 @@ class RegisterReviewRecruiterFragment: Fragment() {
         //EditText
         //소개글을 작성해주세요
         //binding.introWrite
+
+        val companyWrite = binding.companyWrite.text.toString()
+        val serviceWrite = binding.serviceWrite.text.toString()
         //회사를 소개해 주세요
         //binding.companyWrite
         //서비스를 소개해주세요
@@ -63,9 +63,9 @@ class RegisterReviewRecruiterFragment: Fragment() {
 
         //리뷰 모집글 템플릿
         adapter = RegisterReviewRecruiterAdapter()
-        adapter.addItem(RecruiteWriteItem("첫번째 질문을 작성해주세요"))
+        /*adapter.addItem(RecruiteWriteItem("첫번째 질문을 작성해주세요"))
         adapter.addItem(RecruiteWriteItem("두번째 질문을 작성해주세요"))
-        adapter.addItem(RecruiteWriteItem("세번째 질문을 작성해주세요"))
+        adapter.addItem(RecruiteWriteItem("세번째 질문을 작성해주세요"))*/
         binding.listView2.adapter = adapter
 
         //뒤로가기
@@ -74,9 +74,12 @@ class RegisterReviewRecruiterFragment: Fragment() {
             startActivity(intent2)
             requireActivity().finish()
         }
+
         //등록하기
         binding.register.setOnClickListener {
+            var introWrite = binding.introWrite.text.toString()
             val intent2 = Intent(context, MainActivity::class.java)
+            intent2.putExtra("introWrite",introWrite)
             startActivity(intent2)
             requireActivity().finish()
         }
@@ -110,7 +113,7 @@ class RegisterReviewRecruiterFragment: Fragment() {
             Toast.makeText(context,"등록 취소", Toast.LENGTH_SHORT).show()
         }
 
-        var alertDialog = builder.create()
+        val alertDialog = builder.create()
         alertDialog.show()
     }
 
@@ -155,7 +158,6 @@ class RegisterReviewRecruiterFragment: Fragment() {
     override fun onDetach() {
         super.onDetach()
         _binding = null
-        bundle = null
         callBack.remove()
         mainActivity = null
     }

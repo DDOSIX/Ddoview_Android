@@ -1,6 +1,7 @@
 package com.example.ddoview
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,9 +22,14 @@ class MainActivity : AppCompatActivity() {
     private var detailReviewFragment:DetailReviewFragment = DetailReviewFragment()
     private var registerReviewRecruiterFragment: RegisterReviewRecruiterFragment = RegisterReviewRecruiterFragment()
     var mainBundle = Bundle()
-
+    var temp:String? = null
     override fun onStart() {
         super.onStart()
+
+    }
+
+    override fun onResume() {
+        super.onResume()
     }
 
     override fun onStop() {
@@ -32,9 +38,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
 
         //actionbar 없애기
         val actionBar : ActionBar? = supportActionBar
@@ -43,6 +52,11 @@ class MainActivity : AppCompatActivity() {
         adapter = AdvertisementAdapter()
         adapter.addItem(AdvertisementItem("GDG", "이커머스","개발자 구합니다."))
         adapter.addItem(AdvertisementItem("AAA", "패션","개발자 구합니다.2"))
+        temp = intent.getStringExtra("introWrite")
+        if(temp != null)
+        {
+            adapter.addItem(AdvertisementItem("AAA", "패션", temp!!))
+        }
         binding.listView.adapter = adapter
 
         //아이템을 클릭할 경우 ReviewFragment로 넘어감

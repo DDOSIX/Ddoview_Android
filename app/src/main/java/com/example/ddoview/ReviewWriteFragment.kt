@@ -2,10 +2,12 @@ package com.example.ddoview
 
 import android.app.Activity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
@@ -59,8 +61,9 @@ class ReviewWriteFragment: Fragment() {
 
         //리뷰 리스트
         adapter = ReviewWriteAdapter()
-        adapter.addItem(ReviewWriteItem("1. 이 제품을 사용하는 이유는?"))
-        adapter.addItem(ReviewWriteItem("2. 장점은?"))
+        adapter.addItem(ReviewWriteItem("리뷰 제목을 써주세요",""))
+        adapter.addItem(ReviewWriteItem("1. 이 제품을 사용하는 이유는?",""))
+        adapter.addItem(ReviewWriteItem("2. 장점은?",""))
         binding.listView.adapter = adapter
 
         binding.reviewContents.text =
@@ -71,11 +74,22 @@ class ReviewWriteFragment: Fragment() {
                     "  개인정보가 포함되지 않도록 주의해주세요.\n"
 
         binding.register.setOnClickListener {
+            var view1:View = binding.listView.getChildAt(0)
+            var answer1 = view1.findViewById<EditText>(R.id.answer).text.toString()
+            var view2:View = binding.listView.getChildAt(1)
+            var answer2 = view2.findViewById<EditText>(R.id.answer).text.toString()
+            mainActivity!!.mainBundle.putString("answer1",answer1)
+            mainActivity!!.mainBundle.putString("answer2",answer2)
+            mainActivity!!.mainBundle.putString("id","0000")
+            var view3:View = binding.listView.getChildAt(2)
+            var answer3 = view3.findViewById<EditText>(R.id.answer).text.toString()
+            mainActivity!!.mainBundle.putString("answer3",answer3)
             mainActivity!!.onChangeFragment(0,mainActivity!!.mainBundle)
         }
         binding.back.setOnClickListener{
             mainActivity!!.onChangeFragment(0,mainActivity!!.mainBundle)
         }
+
         return rootView
     }
 
@@ -112,7 +126,9 @@ class ReviewWriteFragment: Fragment() {
             }
             val item = items.get(position)
             val question = view?.findViewById<TextView>(R.id.question)
+            val answer = view?.findViewById<EditText>(R.id.answer)
             question!!.setText(item.question)
+            answer!!.setText(item.answer)
             return view!!
         }
 

@@ -54,6 +54,7 @@ class ReviewFragment: Fragment() {
 
         val rootView = binding.root
 
+        val list = ArrayList<ReviewItem>()
 
         arguments?.let {
             val name = it.getString("company")
@@ -62,6 +63,14 @@ class ReviewFragment: Fragment() {
             binding.category.setText(category)
             val contents = it.getString("contents")
             binding.intro.setText(contents)
+
+            val id = it.getString("id")
+            val answer1 = it.getString("answer1")
+            if(id != null && answer1 != null)
+            {
+                list.add(ReviewItem(id,answer1))
+            }
+
         }
 
         //리뷰 이미지 등록
@@ -69,7 +78,7 @@ class ReviewFragment: Fragment() {
 
         //리뷰 리스트
         //ReviewItem에 date 관련 string을 추가해야 함.
-        val list = ArrayList<ReviewItem>()
+
         list.add(ReviewItem("id gdg","평가: 좋아요"))
         list.add(ReviewItem("id 디프만","평가: 싫어요"))
         binding.listView.layoutManager = LinearLayoutManager(context).apply {

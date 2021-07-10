@@ -62,6 +62,12 @@ class DetailReviewFragment: Fragment() {
 
             val category = it.getString("category")
             binding.category.setText(category)
+
+            val answer1 = it.getString("answer1")
+            binding.answer.setText(answer1)
+
+            val answer2 = it.getString("answer2")
+            binding.answer2.setText(answer2)
         }
 
         //리뷰 상세 내용 쓰기
@@ -69,8 +75,8 @@ class DetailReviewFragment: Fragment() {
 
         //리뷰에 대한 코멘트 (댓글)
         adapter = CommentAdapter()
-        adapter.addItem(ReviewCommentItem("id:leehy","리뷰 작성 잘 해주셨어요"))
-        adapter.addItem(ReviewCommentItem("id:gdg","별로에요"))
+        /*adapter.addItem(ReviewCommentItem("id:leehy","리뷰 작성 잘 해주셨어요"))
+        adapter.addItem(ReviewCommentItem("id:gdg","별로에요"))*/
         binding.listView.adapter = adapter
 
 
