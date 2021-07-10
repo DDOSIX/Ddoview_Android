@@ -1,10 +1,7 @@
 package com.example.ddoview
 
 import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
-import android.renderscript.ScriptGroup
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,11 +9,8 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
-import com.example.ddoview.databinding.ReviewFragmentBinding
 import com.example.ddoview.databinding.ReviewWriteFragmentBinding
-import com.example.ddoview.listview.AdvertisementItem
-import com.example.ddoview.listview.ReviewItem
-import com.example.ddoview.listview.ReviewWriteItem
+import com.example.ddoview.data.ReviewWriteItem
 
 class ReviewWriteFragment: Fragment() {
 

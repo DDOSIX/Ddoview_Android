@@ -1,7 +1,6 @@
 package com.example.ddoview
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,15 +9,16 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.ddoview.databinding.ActivityMainBinding
-import com.example.ddoview.listview.AdvertisementItem
+import com.example.ddoview.data.AdvertisementItem
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding:ActivityMainBinding
     private lateinit var adapter: AdvertisementAdapter
     private var reviewFragment:ReviewFragment = ReviewFragment()
-    private var reviewWiteFragment:ReviewWriteFragment = ReviewWriteFragment()
+    private var reviewWriteFragment:ReviewWriteFragment = ReviewWriteFragment()
     private var detailReviewFragment:DetailReviewFragment = DetailReviewFragment()
+    private var registerReviewRecruiterFragment: RegisterReviewRecruiterFragment = RegisterReviewRecruiterFragment()
     var mainBundle = Bundle()
 
     override fun onStart() {
@@ -50,6 +50,10 @@ class MainActivity : AppCompatActivity() {
             mainBundle.putString("contents",item.contents)
             onChangeFragment(0,mainBundle)
         }
+
+        binding.write.setOnClickListener {
+            onChangeFragment(2, mainBundle)
+        }
     }
 
 
@@ -58,23 +62,28 @@ class MainActivity : AppCompatActivity() {
     {
         lateinit var fragment:Fragment
 
-        //ReviewFragment로 이동
-        if(index == 0)
-        {
-            fragment = reviewFragment
-            reviewFragment.arguments = bundle
-        }
-        else if(index == 1)
-        {
-            //reviewWrtieFragment로 이동
-            fragment = reviewWiteFragment
-            reviewWiteFragment.arguments = bundle
-        }
-        else if(index == 3)
-        {
-            //detailReviewFragment로 이동
-            fragment = detailReviewFragment
-            detailReviewFragment.arguments = bundle
+        when(index) {
+            0 -> {
+                //ReviewFragment로 이동
+                fragment = reviewFragment
+                reviewFragment.arguments = bundle
+            }
+            1 -> {
+                //ReviewWriteFragment로 이동
+                fragment = reviewWriteFragment
+                reviewWriteFragment.arguments = bundle
+            }
+            2 -> {
+                //RegisterReviewRecruiterFragment로 이동
+                fragment = registerReviewRecruiterFragment
+                registerReviewRecruiterFragment.arguments = bundle
+            }
+
+            3->{
+                //detailReviewFragment로 이동
+                fragment = detailReviewFragment
+                detailReviewFragment.arguments = bundle
+            }
         }
 
         supportFragmentManager.beginTransaction().replace(R.id.container, fragment).commit()

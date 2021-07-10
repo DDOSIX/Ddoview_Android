@@ -3,7 +3,6 @@ package com.example.ddoview
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.DialogInterface
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,9 +14,7 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import com.example.ddoview.databinding.DetailReviewFragmentBinding
-import com.example.ddoview.databinding.ReviewFragmentBinding
-import com.example.ddoview.listview.ReviewCommentItem
-import com.example.ddoview.listview.ReviewItem
+import com.example.ddoview.data.ReviewCommentItem
 
 class DetailReviewFragment: Fragment() {
 

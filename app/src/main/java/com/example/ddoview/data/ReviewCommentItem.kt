@@ -1,4 +1,4 @@
-package com.example.ddoview.listview
+package com.example.ddoview.data
 //review에 대한 댓글, DetailReviewFragment
 class ReviewCommentItem(var id: String, var contents: String) {
     override fun toString(): String {

@@ -3,35 +3,40 @@ package com.example.ddoview
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.Button
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import com.example.ddoview.data.RecruiteWriteItem
+import com.example.ddoview.data.ReviewWriteItem
+import com.example.ddoview.databinding.RecruiteWriteFragmentBinding
 import com.example.ddoview.databinding.ReviewFragmentBinding
-import com.example.ddoview.data.ReviewItem
+import com.example.ddoview.databinding.ReviewWriteFragmentBinding
 
-class ReviewFragment: Fragment() {
-
-    //reviewPage,
-    private var _binding: ReviewFragmentBinding? = null
+class RegisterReviewRecruiterFragment: Fragment() {
+    private var _binding: RecruiteWriteFragmentBinding ?= null
     private val binding get() = _binding!!
-    private var bundle:Bundle? = null
-    private lateinit var adapter: ReviewAdapter
+    private var bundle: Bundle? = null
+    private lateinit var adapter: RegisterReviewRecruiterFragment.RegisterReviewRecruiterAdapter
+    private var company: String? = null
+    private var contents: String? = null
     private var mainActivity: MainActivity? = null
 
     //뒤로가기
-    private lateinit var callBack:OnBackPressedCallback
+    private lateinit var callBack: OnBackPressedCallback
 
     override fun onAttach(activity: Activity) {
         super.onAttach(activity)
 
         callBack = object : OnBackPressedCallback(true){
             override fun handleOnBackPressed() {
-                //메인 화면으로 이동
-                val intent = Intent(context,MainActivity::class.java)
+                // 메인 화면으로 이동
+                val intent = Intent(context, MainActivity::class.java)
                 startActivity(intent)
                 requireActivity().finish()
             }
@@ -42,44 +47,34 @@ class ReviewFragment: Fragment() {
         mainActivity = activity as MainActivity
     }
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        _binding = ReviewFragmentBinding.inflate(inflater,container,false)
+        _binding = RecruiteWriteFragmentBinding.inflate(inflater,container,false)
 
         val rootView = binding.root
-
-
-        arguments?.let {
-            val name = it.getString("company")
-            binding.company.setText(name)
-        }
 
         //리뷰 상세 내용 쓰기
         //binding.contents.text
 
-        //리뷰 리스트
-        adapter = ReviewAdapter()
-        adapter.addItem(ReviewItem("id:leehy","좋아요"))
-        adapter.addItem(ReviewItem("id:gdg","별로에요"))
-        binding.listView.adapter = adapter
+        //리뷰 모집글 템플릿
+        adapter = RegisterReviewRecruiterAdapter()
+        adapter.addItem(RecruiteWriteItem("회사 소개"))
+        adapter.addItem(RecruiteWriteItem("서비스 소개"))
+        adapter.addItem(RecruiteWriteItem("질문"))
+        binding.listView2.adapter = adapter
 
-        //리뷰 작성 페이지로 이동하기, ReviewWriteFragment
-        binding.write.setOnClickListener {
-            mainActivity!!.onChangeFragment(1, mainActivity!!.mainBundle)
+        binding.btnDone.setOnClickListener {
+            // TODO: 리뷰어 모집글 업데이트
+            // 메인 화면으로
+            val intent2 = Intent(context, MainActivity::class.java)
+            startActivity(intent2)
+            requireActivity().finish()
         }
 
-        binding.listView.setOnItemClickListener { parent, view, position, id ->
-            val item = adapter.getItem(position) as ReviewItem
-
-            //reviewFragment로 이동하기, id 넘기기
-            mainActivity!!.mainBundle.putString("id",item.title)
-            mainActivity!!.onChangeFragment(3,mainActivity!!.mainBundle)
-        }
         return rootView
     }
 
-    inner class ReviewAdapter : BaseAdapter() {
-        var items: ArrayList<ReviewItem> = ArrayList<ReviewItem>()
+    inner class RegisterReviewRecruiterAdapter : BaseAdapter() {
+        var items: ArrayList<RecruiteWriteItem> = ArrayList<RecruiteWriteItem>()
 
         override fun getCount(): Int {
             return items.size
@@ -94,7 +89,7 @@ class ReviewFragment: Fragment() {
         }
 
         //아이템 추가할 경우..
-        fun addItem(item: ReviewItem)
+        fun addItem(item: RecruiteWriteItem)
         {
             items.add(item)
         }
@@ -104,21 +99,17 @@ class ReviewFragment: Fragment() {
             if(view == null)
             {
                 view = LayoutInflater.from(parent?.context).inflate(
-                        R.layout.review_item,
-                        parent,
-                        false
+                    R.layout.recruite_write_item,
+                    parent,
+                    false
                 )
             }
             val item = items.get(position)
-            val company = view?.findViewById<TextView>(R.id.company)
-            val contents = view?.findViewById<TextView>(R.id.contents)
-            company!!.setText(item.title)
-            contents!!.setText(item.contents)
+            val question = view?.findViewById<TextView>(R.id.question2)
+            question!!.setText(item.question)
             return view!!
         }
-
     }
-
 
     override fun onDetach() {
         super.onDetach()
@@ -127,4 +118,5 @@ class ReviewFragment: Fragment() {
         callBack.remove()
         mainActivity = null
     }
+
 }
