@@ -26,13 +26,13 @@
             android:layout_marginTop="34dp"
             android:layout_marginStart="25dp"
             android:text="스타트업의 모든 서비스를 체험하고
-정성스러운 리뷰를 남겨주세요"
+정성스러운 리뷰를 남겨주세요!"
             style="@style/Text.notosansmonocjkkr_bold"
             />
         <Button
             android:id="@+id/write"
             android:layout_width="67dp"
-            android:layout_height="34dp"
+            android:layout_height="40dp"
             android:text="글쓰기"
             android:layout_marginLeft="294dp"
             android:layout_marginTop="6dp"
@@ -60,7 +60,7 @@
             android:layout_marginTop="8dp"
             >
             <ListView
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="20dp"
                 android:id="@+id/listView"
                 android:layout_width="match_parent"
                 android:layout_height="690dp"

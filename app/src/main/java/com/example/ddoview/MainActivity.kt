@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.ddoview.databinding.ActivityMainBinding
@@ -35,6 +36,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //actionbar 없애기
+        val actionBar : ActionBar? = supportActionBar
+        actionBar?.hide()
         //listview 어댑터
         adapter = AdvertisementAdapter()
         adapter.addItem(AdvertisementItem("GDG", "이커머스","개발자 구합니다."))
