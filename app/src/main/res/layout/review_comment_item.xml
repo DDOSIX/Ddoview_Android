@@ -2,19 +2,48 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/rectangle36"
     >
     <TextView
         android:id="@+id/id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="id"
+        android:text="유저 닉네임"
         android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        style="@style/Text.notosansmonocjkkr_regular"
+        />
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2021-07-11"
+        android:layout_toRightOf="@id/id"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        style="@style/Text.notosansmonocjkkr_regular"
         />
     <TextView
         android:id="@+id/contents"
         android:layout_below="@id/id"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="리뷰 작성 성실하게 잘 하셨네요"
+        android:layout_marginLeft="5dp"
+        style="@style/Text.notosansmonocjkkr_regular"
+        />
+    <TextView
+        android:id="@+id/report"
+        android:layout_below="@id/contents"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="신고하기"
+        style="@style/Text.notosansmonocjkkr_regular"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="25dp"
         />
 </RelativeLayout>

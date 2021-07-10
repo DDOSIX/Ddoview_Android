@@ -7,14 +7,38 @@
         android:id="@+id/company"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="회사이름"
+        android:text="리뷰 제목입니다"
         android:textColor="@color/black"
+        style="@style/Text.notosansmonocjkkr_bold"
         />
     <TextView
         android:id="@+id/contents"
         android:layout_below="@id/company"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="성실한 사람 구합니다."
+        style="@style/Text.notosansmonocjkkr_regular"
+        android:textColor="#000000"
+        />
+    <TextView
+        android:id="@+id/date"
+        android:layout_below="@id/company"
+        android:layout_toRightOf="@id/contents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="6dp"
+        android:text="2021.07.10"
+        style="@style/Text.notosansmonocjkkr_regular"
+        android:textColor="#000000"
+        />
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/icon_inside"
         />
 </RelativeLayout>

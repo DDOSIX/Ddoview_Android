@@ -1,18 +1,19 @@
 package com.example.ddoview
 
 import android.app.Activity
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.Button
-import android.widget.TextView
+import android.widget.*
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import com.example.ddoview.data.RecruiteWriteItem
+import com.example.ddoview.data.ReviewCommentItem
 import com.example.ddoview.data.ReviewWriteItem
 import com.example.ddoview.databinding.RecruiteWriteFragmentBinding
 import com.example.ddoview.databinding.ReviewFragmentBinding
@@ -52,25 +53,65 @@ class RegisterReviewRecruiterFragment: Fragment() {
 
         val rootView = binding.root
 
-        //리뷰 상세 내용 쓰기
-        //binding.contents.text
+        //EditText
+        //소개글을 작성해주세요
+        //binding.introWrite
+        //회사를 소개해 주세요
+        //binding.companyWrite
+        //서비스를 소개해주세요
+        //binding.serviceWrite
 
         //리뷰 모집글 템플릿
         adapter = RegisterReviewRecruiterAdapter()
-        adapter.addItem(RecruiteWriteItem("회사 소개"))
-        adapter.addItem(RecruiteWriteItem("서비스 소개"))
-        adapter.addItem(RecruiteWriteItem("질문"))
+        adapter.addItem(RecruiteWriteItem("첫번째 질문을 작성해주세요"))
+        adapter.addItem(RecruiteWriteItem("두번째 질문을 작성해주세요"))
+        adapter.addItem(RecruiteWriteItem("세번째 질문을 작성해주세요"))
         binding.listView2.adapter = adapter
 
-        binding.btnDone.setOnClickListener {
-            // TODO: 리뷰어 모집글 업데이트
-            // 메인 화면으로
+        //뒤로가기
+        binding.back.setOnClickListener {
             val intent2 = Intent(context, MainActivity::class.java)
             startActivity(intent2)
             requireActivity().finish()
         }
-
+        //등록하기
+        binding.register.setOnClickListener {
+            val intent2 = Intent(context, MainActivity::class.java)
+            startActivity(intent2)
+            requireActivity().finish()
+        }
+        binding.plus.setOnClickListener {
+            AddCommentMaker()
+            Toast.makeText(context,"click",Toast.LENGTH_SHORT).show()
+        }
         return rootView
+    }
+
+    //새로운 질문 등록하기, alert dialog 실행
+    fun AddCommentMaker()
+    {
+        var builder = AlertDialog.Builder(activity)
+
+        builder.setTitle("질문 추가하기")
+        var editText = EditText(context)
+        builder.setView(editText)
+
+        builder.setPositiveButton("등록"){ dialogInterface: DialogInterface, i: Int ->
+            Toast.makeText(context,"등록 완료", Toast.LENGTH_SHORT).show()
+
+            var question = editText.text.toString()
+
+            //작성된 내용을 listview에 등록, id는 현재 로그인한 아이디를 넣어야함. ("임시 id")에 데이터
+            adapter.addItem(RecruiteWriteItem(question))
+            binding.listView2.adapter = adapter
+        }
+
+        builder.setNegativeButton("취소"){ dialogInterface: DialogInterface, i: Int ->
+            Toast.makeText(context,"등록 취소", Toast.LENGTH_SHORT).show()
+        }
+
+        var alertDialog = builder.create()
+        alertDialog.show()
     }
 
     inner class RegisterReviewRecruiterAdapter : BaseAdapter() {

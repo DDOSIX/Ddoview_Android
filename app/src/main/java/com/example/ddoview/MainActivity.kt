@@ -49,11 +49,13 @@ class MainActivity : AppCompatActivity() {
         binding.listView.setOnItemClickListener { parent, view, position, id ->
             val item = adapter.getItem(position) as AdvertisementItem
 
-            //title과 contents만 넘긴 후 reviewFragment로 넘김, bundle
+            //title과 contents, category 넘긴 후 reviewFragment로 넘김, bundle
             mainBundle.putString("company",item.title)
             mainBundle.putString("contents",item.contents)
+            mainBundle.putString("category",item.category)
             onChangeFragment(0,mainBundle)
         }
+
 
         binding.write.setOnClickListener {
             onChangeFragment(2, mainBundle)

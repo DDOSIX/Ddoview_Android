@@ -8,13 +8,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="이 제품을 사용하는 이유는?"
-        android:textColor="@color/black"
+        android:textColor="@color/blue"
+        style="@style/Text.notosansmonocjkkr_regular"
+        android:layout_marginTop="20dp"
         />
     <EditText
         android:id="@+id/answer"
         android:layout_below="@id/question"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="327dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="10dp"
         android:text=""
+        android:background="@drawable/rectangle29"
         />
 </RelativeLayout>

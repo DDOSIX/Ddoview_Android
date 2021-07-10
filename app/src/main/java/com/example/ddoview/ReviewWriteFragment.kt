@@ -47,7 +47,11 @@ class ReviewWriteFragment: Fragment() {
 
         arguments?.let {
             company = it.getString("company")
+            binding.company.text = company
             contents = it.getString("contents")
+            binding.intro.text = contents
+            val category = it.getString("category")
+            binding.category.text = category
         }
 
         //리뷰 상세 내용 쓰기
@@ -59,7 +63,19 @@ class ReviewWriteFragment: Fragment() {
         adapter.addItem(ReviewWriteItem("2. 장점은?"))
         binding.listView.adapter = adapter
 
+        binding.reviewContents.text =
+            "  리뷰 양식에 맞추어 내용을 충분히 작성해주세요.\n" +
+                    "  명예훼손, 저작권 침해 등의 내용이 포함되지 않도록 해주세요.\n" +
+                    "  비속어가 포함되지 않도록 주의해주세요.\n" +
+                    "  사용한 서비스와 작성한 리뷰가 일치하는지 확인해주세요.\n" +
+                    "  개인정보가 포함되지 않도록 주의해주세요.\n"
 
+        binding.register.setOnClickListener {
+            mainActivity!!.onChangeFragment(0,mainActivity!!.mainBundle)
+        }
+        binding.back.setOnClickListener{
+            mainActivity!!.onChangeFragment(0,mainActivity!!.mainBundle)
+        }
         return rootView
     }
 

@@ -5,21 +5,132 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <Button
-        android:id="@+id/btn_done"
+    <ImageView
+        android:id="@+id/back"
+        android:layout_marginTop="15dp"
+        android:layout_width="15dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/icon_back"
+        />
+    <ImageButton
+        android:id="@+id/register"
+        android:layout_marginTop="15dp"
+        android:layout_width="50dp"
+        android:layout_height="25dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/finish_button"
+        />
+    <TextView
+        android:text="리뷰 템플릿 작성하기"
+        android:id="@+id/title_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="작성완료"/>
+        style="@style/Text.notosansmonocjkkr_bold"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:layout_marginTop="18dp"
+        />
 
+    <TextView
+        android:text="25자 이내로 소개글을 작성해주세요"
+        android:id="@+id/intro"
+        android:layout_below="@id/title_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Text.notosansmonocjkkr_bold"
+        android:textSize="20dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="18dp"
+        />
+
+    <EditText
+        android:hint="소개글을 작성해주세요"
+        android:id="@+id/intro_write"
+        android:layout_below="@id/intro"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        style="@style/Text.notosansmonocjkkr_bold"
+        android:textSize="8dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/rectangle36"
+        />
+
+    <TextView
+        android:text="회사와 서비스를 소개해주세요"
+        android:id="@+id/service_intro"
+        android:layout_below="@id/intro_write"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Text.notosansmonocjkkr_bold"
+        android:textSize="20dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="18dp"
+        />
+
+    <EditText
+        android:hint="회사를 소개해주세요"
+        android:id="@+id/company_write"
+        android:layout_below="@id/service_intro"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        style="@style/Text.notosansmonocjkkr_bold"
+        android:textSize="8dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/rectangle36"
+        />
+
+    <EditText
+        android:hint="서비스를 소개해주세요"
+        android:id="@+id/service_write"
+        android:layout_below="@id/company_write"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        style="@style/Text.notosansmonocjkkr_bold"
+        android:textSize="8dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/rectangle36"
+        />
+    <Button
+        android:id="@+id/attach"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:text="첨부하기"
+        android:layout_marginTop="6dp"
+        android:layout_marginStart="15dp"
+        android:layout_below="@id/service_write"
+        android:textSize="10dp"
+        style="@style/Text.notosansmonocjkkr_regular"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/blue"
+        />
     <ScrollView
-        android:layout_below="@id/btn_done"
+        android:id="@+id/scrollView"
+        android:layout_below="@id/attach"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
         android:fillViewport="true">
         <ListView
             android:id="@+id/listView2"
+            android:layout_marginLeft="15dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:dividerHeight="0px"
+            android:divider="#FFFFFF"/>
     </ScrollView>
+    <ImageView
+        android:id="@+id/plus"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@drawable/plus_button"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="15dp"
+        />
 
 </RelativeLayout>

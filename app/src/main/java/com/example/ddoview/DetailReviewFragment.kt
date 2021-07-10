@@ -59,6 +59,9 @@ class DetailReviewFragment: Fragment() {
 
             val company = it.getString("company")
             binding.company.setText(company)
+
+            val category = it.getString("category")
+            binding.category.setText(category)
         }
 
         //리뷰 상세 내용 쓰기
@@ -72,6 +75,7 @@ class DetailReviewFragment: Fragment() {
 
 
         //새로운 댓글 등록
+        binding.count!!.text = adapter.count.toString().plus("개")
         binding.add.setOnClickListener {
             AddCommentMaker()
         }
@@ -95,6 +99,7 @@ class DetailReviewFragment: Fragment() {
             //작성된 내용을 listview에 등록, id는 현재 로그인한 아이디를 넣어야함. ("임시 id")에 데이터
             adapter.addItem(ReviewCommentItem("임시 id",comment))
             binding.listView.adapter = adapter
+            binding.count.text = adapter.count.toString().plus("개")
         }
 
         builder.setNegativeButton("취소"){ dialogInterface: DialogInterface, i: Int ->
