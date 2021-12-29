@@ -11,7 +11,6 @@ import com.example.ddoview.R
 
 class ReviewAdapter(private val items: ArrayList<ReviewItem>,private val activity: MainActivity) :
     RecyclerView.Adapter<ReviewAdapter.ViewHolder>(){
-    private var count:Int = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflatedView = LayoutInflater.from(parent.context)
@@ -20,7 +19,7 @@ class ReviewAdapter(private val items: ArrayList<ReviewItem>,private val activit
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val listener = View.OnClickListener {it ->
+        val listener = View.OnClickListener {
 
         }
 
@@ -40,6 +39,7 @@ class ReviewAdapter(private val items: ArrayList<ReviewItem>,private val activit
         //date를 추가적으로 넣어주어야 함
         val company = itemView.findViewById<TextView>(R.id.company)
         val contents = itemView.findViewById<TextView>(R.id.contents)
+
         fun bind(listener: View.OnClickListener, item: ReviewItem){
             v.setOnClickListener(listener)
             company.text = item.title

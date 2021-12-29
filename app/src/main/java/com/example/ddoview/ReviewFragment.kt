@@ -5,18 +5,16 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
-import android.view.View.OnTouchListener
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.TextView
+import android.widget.ScrollView
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ddoview.data.ReviewAdapter
 import com.example.ddoview.data.ReviewItem
 import com.example.ddoview.databinding.ReviewFragmentBinding
+
 
 class ReviewFragment: Fragment() {
 
@@ -68,7 +66,7 @@ class ReviewFragment: Fragment() {
             val answer1 = it.getString("answer1")
             if(id != null && answer1 != null)
             {
-                list.add(ReviewItem(id,answer1))
+                list.add(ReviewItem(id, answer1))
             }
 
         }
@@ -79,13 +77,13 @@ class ReviewFragment: Fragment() {
         //리뷰 리스트
         //ReviewItem에 date 관련 string을 추가해야 함.
 
-        list.add(ReviewItem("id gdg","평가: 좋아요"))
-        list.add(ReviewItem("id 디프만","평가: 싫어요"))
-        binding.listView.layoutManager = LinearLayoutManager(context).apply {
-            isAutoMeasureEnabled//onmeasured
-        }
-        binding.listView.adapter = ReviewAdapter(list,mainActivity!!)
+        list.add(ReviewItem("id gdg", "평가: 좋아요"))
+        list.add(ReviewItem("id 디프만", "평가: 싫어요"))
+        binding.listView.layoutManager = LinearLayoutManager(context)
+        binding.listView.setHasFixedSize(false)
+        binding.listView.isNestedScrollingEnabled = true
 
+        binding.listView.adapter = ReviewAdapter(list, mainActivity!!)
         //리뷰 작성 페이지로 이동하기, ReviewWriteFragment
         binding.write.setOnClickListener {
             mainActivity!!.onChangeFragment(1, mainActivity!!.mainBundle)
